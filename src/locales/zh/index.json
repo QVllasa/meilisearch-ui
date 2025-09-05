@@ -35,6 +35,6 @@
     "sortableAttributes": "可排序属性"
   },
   "search": {
-    "tip": "此处仅搜索本页所展示的数据，这是因为 Meilisearch 并未提供对索引列表的搜索接口！"
+    "tip": "此处通过 /stats 接口数据进行模糊搜索，这是因为 Meilisearch 并未提供针对索引的搜索接口"
   }
 }

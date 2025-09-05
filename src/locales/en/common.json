@@ -37,6 +37,8 @@
   "version": "Version",
   "none": "None",
   "singleton_mode": "Singleton Mode",
+  "enable": "Enable",
+  "disable": "Disable",
   "toast": {
     "fail": "Failed, {{msg}}"
   }

@@ -13,7 +13,7 @@ ENGLISH ｜ [中文](./README.zh-CN.md)
 
 <a href="https://www.producthunt.com/posts/meilisearch-ui?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-meilisearch&#0045;ui" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=373175&theme=light" alt="Meilisearch&#0045;UI - Pretty&#0044;&#0032;simple&#0032;and&#0032;fast&#0032;meilisearch&#0032;admin&#0032;dashboard | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
-#### An open-source, pretty, simple and fast meilisearch admin dashboard UI for managing your meilisearch instances
+An open-source, pretty, simple and fast meilisearch admin dashboard UI for managing your meilisearch instances
 
 > [!IMPORTANT]
 > The main branch may be unstable or unavailable during development.
@@ -71,8 +71,19 @@ There is a live demo 👉 [meilisearch-ui](https://meilisearch-ui.riccox.com), d
 ```sh
 docker pull riccoxie/meilisearch-ui:latest
 
-docker run -d --restart=always --name="meilisearch-ui" -p <your-port>:24900 riccoxie/meilisearch-ui:latest
+docker run -d --restart=on-failure:5 --name="meilisearch-ui" -p <your-port>:24900 riccoxie/meilisearch-ui:latest
 ```
+
+#### Lightweight mirror image
+
+Due to functions such as adapting custom paths, the main image size will become a burden for some users. If you only need to use the basic functionality of the application, you can use the `lite` variant image, which contains only the necessary constructs and is very small compared to the main image.
+
+For specific image variants, please refer to [Image version list](https://hub.docker.com/r/riccoxie/meilisearch-ui/tags)
+
+lite images do not support the following features:
+
+- Custom path
+- Singleton mode
 
 ### Deploy on Vercel
 
@@ -94,34 +105,62 @@ You can configure the base path of this app by setting the `BASE_PATH` environme
 For example, if you want to deploy this app to the `/meilisearch-ui` path, you can set the `BASE_PATH` environment variable to `/meilisearch-ui`.
 
 ```sh
-docker run -d --restart=always --name="meilisearch-ui" -p <your-port>:24900 -e BASE_PATH="/meilisearch-ui" riccoxie/meilisearch-ui:latest
+docker run -d --restart=on-failure:5 --name="meilisearch-ui" -p <your-port>:24900 -e BASE_PATH="/meilisearch-ui" riccoxie/meilisearch-ui:latest
 ```
+
+> [!WARNING]
+>
+> Please note that if you want to use a custom base path to the function, please use the full version image instead of the `lite` variant image. Please refer to [this issue](https://github.com/riccox/meilisearch-ui/issues/178) for details.
 
 ### Singleton mode
 
 See this [issue](https://github.com/riccox/meilisearch-ui/issues/43).
 
-If you want to use this app with only one meilisearch instance, you can enable the singleton mode by below steps.
+If you want to use this app with only one meilisearch instance, you can enable the singleton mode in two ways:
 
-Clone this repo
+#### Using Docker (Recommended)
+
+Configure singleton mode using environment variables:
+
+```sh
+docker run -d --restart=on-failure:5 \
+  --name="meilisearch-ui" \
+  -p <your-port>:24900 \
+  -e SINGLETON_MODE=true \
+  -e SINGLETON_HOST=your-meilisearch-host \
+  -e SINGLETON_API_KEY=your-api-key \
+  riccoxie/meilisearch-ui:latest
+```
+
+> [!CAUTION]
+>
+> **Security Note**
+>
+> Any singleton mode relevant env variables exposed in this way will eventually appear in the client package, so you should try to avoid using this method. When using singleton mode packaging, you need to carefully judge the network environment in which you deploy the application, and it is recommended to deploy in a trusted internal network environment.
+
+#### Build from Source
+
+If you need more customization, you can build from source following these steps:
+
+1.Clone this repo
 
 ```sh
 git clone git@github.com:riccox/meilisearch-ui.git --depth=1
 ```
 
-Go into root dir of repo
+2.Go into root dir of repo
 
 ```sh
 cd meilisearch-ui
 ```
 
-install dependencies
+3.install dependencies
 
 ```sh
 pnpm install
 ```
 
-create `.env.local` file at root dir of repo, input following config codes below
+4.create `.env.local` file at root dir of repo, add the following configuration:
 
 ```
 VITE_SINGLETON_MODE=true
@@ -130,19 +169,16 @@ VITE_SINGLETON_API_KEY=your-api-key
 ```
 
 > [!CAUTION]
+>
 > **Security Risk**
 >
 > See this [issue](https://github.com/riccox/meilisearch-ui/issues/161).
 >
-> `.env.local` file is local only and you should add it in your `.gitignore` to prevent them from being recorded by git.
+> `.env.local` file is local only and you should add it in your `.gitignore` to prevent it from being recorded by git.
 >
 > At the same time, any variables exposed in this way will eventually appear in the client package, so you should try to avoid using this method. When using singleton mode packaging, you need to carefully judge the network environment in which you deploy the application, and it is recommended to deploy in a trusted internal network environment.
 
-- `VITE_SINGLETON_MODE` tell this app to enable singleton mode.
-- `VITE_SINGLETON_HOST` is the meilisearch host url.
-- `VITE_SINGLETON_API_KEY` is the meilisearch master key.
-
-Next, build the singleton app.
+5.Build the app
 
 ```sh
 pnpm build
@@ -150,7 +186,29 @@ pnpm build
 
 Once the build is complete, you will find the `dist` directory in the root directory, which is a packaged SPA application directory that can be deployed to any server.
 
-Then you will directly jump to the instance page when you open this app.
+You can preview the packaged singleton mode application locally using the following command:
+
+```sh
+pnpm dlx serve dist
+```
+
+Regardless of which method you use, when you open the app, you will be directly redirected to the instance page.
+
+## FAQ
+
+### How to allow custom hostnames or reverse proxy domains?
+
+By default, all hosts are allowed and no extra configuration is needed.
+
+Only if you want to restrict allowed hostnames, you can set the optional environment variable `ALLOWED_HOSTS`. For example:
+
+```sh
+ALLOWED_HOSTS=demo.ddev.site,another.domain.com
+```
+
+If you have no special requirements, you do not need to set this variable.
+
+> **Note:** The `ALLOWED_HOSTS` variable is only available in the full version image. The lite image does not support this feature.
 
 ## Development
 
@@ -169,34 +227,49 @@ pnpm dev
 
 ## Built with ♥
 
-- Meilisearch
-- Tanstack
-- React v18
-- Arco design
-- Semi UI
-- Mantine UI
-- Next UI
-- Radix UI
-- Tabler Icon
-- Lucide Icon
-- Monaco Editor for react
-- TypeScript
-- Vite
-- Zustand
-- TailwindCSS
-- React Error Boundary
-- Prettier
-- Fuse.js
-- Echarts
-- Lodash.js
-- Immer
-- Ahooks
-- Framer motion
-- react-json-view
-- Dayjs
-- I18Next
-- UnoCSS
-- qs
-- Sonner
-- Vaul
-- Zod
+### Core Dependencies
+- [Meilisearch](https://github.com/meilisearch/meilisearch) - Search engine
+- [React](https://reactjs.org/) v18 - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Vite](https://vitejs.dev/) - Build tool
+
+### UI Frameworks & Components
+- [Arco Design](https://arco.design/) - Enterprise design system by ByteDance
+- [Semi UI](https://semi.design/) - Design system by TikTok Frontend Team
+- [Mantine UI](https://mantine.dev/) - Modern React components library
+- [Next UI](https://nextui.org/) - Beautiful React UI library
+- [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible components
+- [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [UnoCSS](https://unocss.dev/) - Instant atomic CSS engine
+
+### State Management & Data Handling
+- [TanStack Query](https://tanstack.com/query/latest) - Powerful async state management
+- [TanStack Router](https://tanstack.com/router/latest) - Type-safe routing
+- [Zustand](https://zustand-demo.pmnd.rs/) - Simple state management
+- [Immer](https://immerjs.github.io/immer/) - Immutable state handling
+- [Zod](https://zod.dev/) - TypeScript-first schema validation
+
+### Internationalization & Forms
+- [i18next](https://www.i18next.com/) - Internationalization framework
+- [React Hook Form](https://react-hook-form.com/) - High-performance forms
+- [React Error Boundary](https://github.com/bvaughn/react-error-boundary) - Error handling
+
+### Utilities & Enhancements
+- [Lodash](https://lodash.com/) - Utility library
+- [Day.js](https://day.js.org/) - Lightweight date handling
+- [Fuse.js](https://fusejs.io/) - Fuzzy search library
+- [ECharts](https://echarts.apache.org/) - Visualization library
+- [ahooks](https://ahooks.js.org/) - React Hooks library
+
+### Development Tools
+- [Biome](https://biomejs.dev/) - Code formatting and linting
+- [ESLint](https://eslint.org/) - Code quality tool
+- [Prettier](https://prettier.io/) - Code formatter
+
+### UI Enhancements
+- [Framer Motion](https://www.framer.com/motion/) - Animation library
+- [Lucide Icons](https://lucide.dev/) - Icon library
+- [Tabler Icons](https://tabler-icons.io/) - Icon library
+- [Monaco Editor](https://microsoft.github.io/monaco-editor/) - Code editor
+- [Sonner](https://sonner.emilkowal.ski/) - Toast notifications
+- [Vaul](https://vaul.emilkowal.ski/) - Drawer component

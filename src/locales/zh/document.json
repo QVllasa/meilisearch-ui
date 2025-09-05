@@ -35,6 +35,12 @@
       "showRankingScore": {
         "label": "显示排名分数",
         "tip": "此选项仅在支持 showRankingScore 参数的实例（> v1.3.0）上有效，开启后将在返回的搜索结果中出现 _rankingScore 字段，请参考官方文档了解此参数的含义"
+      },
+      "hybrid": {
+        "label": "混合搜索",
+        "embedder": "嵌入器",
+        "semanticRatio": "语义比例",
+        "embedder_required": "嵌入器是必填项"
       }
     },
     "results": {

@@ -35,6 +35,12 @@
       "showRankingScore": {
         "label": "Show Ranking Score",
         "tip": "This option is only support showRankingScore parameters instance (> v1.3.0) effectively, the _rankingScore field will appear in the returned search results when enabled, please refer to the official document for the meaning of this parameter"
+      },
+      "hybrid": {
+        "label": "Hybrid Search",
+        "embedder": "Embedder",
+        "semanticRatio": "Semantic Ratio",
+        "embedder_required": "Embedder is required"
       }
     },
     "results": {

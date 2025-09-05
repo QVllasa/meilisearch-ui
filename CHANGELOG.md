@@ -1,5 +1,198 @@
 # Changelog
 
+## [0.13.2](https://github.com/riccox/meilisearch-ui/compare/v0.13.1...v0.13.2) (2025-07-03)
+
+
+### Bug Fixes
+
+* **search:** JSON and Grid views are not scrollable. gh-235 ([3b5347b](https://github.com/riccox/meilisearch-ui/commit/3b5347be43871871394c1e6e2c47eec532691520))
+* site logo SVG file. ([a7e40b6](https://github.com/riccox/meilisearch-ui/commit/a7e40b64b97b36ddfe750b339bf549ffdfe9d25d))
+
+
+### Performance Improvements
+
+* **search:** add sortable fields to sort input for auto-complete. gh-236 ([f3c9270](https://github.com/riccox/meilisearch-ui/commit/f3c9270c760ea5998f8abd8b4ba0422503ce7723))
+
+## [0.13.1](https://github.com/riccox/meilisearch-ui/compare/v0.13.0...v0.13.1) (2025-07-01)
+
+
+### Bug Fixes
+
+* docs table height. gh-233 ([25f912f](https://github.com/riccox/meilisearch-ui/commit/25f912fd265f3e504767235f194e1af6ed9f48ae))
+
+
+### Performance Improvements
+
+* **search:** enhance SearchForm with auto-complete embedders. ([dbf20d4](https://github.com/riccox/meilisearch-ui/commit/dbf20d4a247db92d64e4f0d222318fceed85aa25))
+
+## [0.13.0](https://github.com/riccox/meilisearch-ui/compare/v0.12.4...v0.13.0) (2025-06-29)
+
+
+### Features
+
+* **search:** add hybrid search functionality with modal configuration. ([75afdcf](https://github.com/riccox/meilisearch-ui/commit/75afdcf736fc2313f5fb016cb69a6cdc99a8a527))
+
+
+### Bug Fixes
+
+* task duration parse. gh-231 ([ca8e627](https://github.com/riccox/meilisearch-ui/commit/ca8e627391edde3baf78e046c9e31ad6827e2c85))
+
+
+### Performance Improvements
+
+* task list field display. ([ca8e627](https://github.com/riccox/meilisearch-ui/commit/ca8e627391edde3baf78e046c9e31ad6827e2c85))
+
+## [0.12.4](https://github.com/riccox/meilisearch-ui/compare/v0.12.3...v0.12.4) (2025-06-14)
+
+
+### Bug Fixes
+
+* incorrect i18n key in keyForm "expiresAt" field. ([#228](https://github.com/riccox/meilisearch-ui/issues/228)) ([7a0c3d6](https://github.com/riccox/meilisearch-ui/commit/7a0c3d68fd65c16c1fa55f2c947f4ffc59102496))
+
+## [0.12.3](https://github.com/riccox/meilisearch-ui/compare/v0.12.2...v0.12.3) (2025-06-04)
+
+
+### Bug Fixes
+
+* **task:** finishedAt field display wrong value for processing & enqueued tasks. ([3a9c28c](https://github.com/riccox/meilisearch-ui/commit/3a9c28c719dacb251eccdbafa4a9e5fed30f1c30))
+
+
+### Performance Improvements
+
+* **task:** add CountUp component for displaying elapsed time of "Duration". ([3a9c28c](https://github.com/riccox/meilisearch-ui/commit/3a9c28c719dacb251eccdbafa4a9e5fed30f1c30))
+
+## [0.12.2](https://github.com/riccox/meilisearch-ui/compare/v0.12.1...v0.12.2) (2025-05-08)
+
+
+### Bug Fixes
+
+* Vite preview config. ([9b89733](https://github.com/riccox/meilisearch-ui/commit/9b8973323587b0ce4d822a72b2642a14c42d8a88))
+
+## [0.12.1](https://github.com/riccox/meilisearch-ui/compare/v0.12.0...v0.12.1) (2025-05-06)
+
+
+### Bug Fixes
+
+* config allow custom host names or reverse proxy domain names by env. gh-220 ([8f98708](https://github.com/riccox/meilisearch-ui/commit/8f987089f04cbdf325a2b219aee8883bddbd691e))
+
+## [0.12.0](https://github.com/riccox/meilisearch-ui/compare/v0.11.7...v0.12.0) (2025-04-27)
+
+
+### Features
+
+* updated the cmd.sh script to support singleton environment variables. ([8c409bc](https://github.com/riccox/meilisearch-ui/commit/8c409bc9b639157ab17c616879e0206b202a923d))
+
+
+### Performance Improvements
+
+* language selection integrate status management. gh-216 ([04191b6](https://github.com/riccox/meilisearch-ui/commit/04191b6ad8f1e4af952ef4fc4dc0f04967b8dd8e))
+* Optimized scrolling behavior of table header for table views. gh-217 ([3753d5b](https://github.com/riccox/meilisearch-ui/commit/3753d5bbeffc84be0b07a480283d287e692830c2))
+
+## [0.11.7](https://github.com/riccox/meilisearch-ui/compare/v0.11.6...v0.11.7) (2025-04-24)
+
+
+### Documentation
+
+* add singleton mode usage steps and local preview command in README. ([852a533](https://github.com/riccox/meilisearch-ui/commit/852a533311f0f25f8a1e63a74ae5535330e2dfda))
+* improve Docker restart strategy in README examples. gh-212 ([4e962d0](https://github.com/riccox/meilisearch-ui/commit/4e962d0cd7cac02c4e40f2f74338af3db5e5e68b))
+
+## [0.11.6](https://github.com/riccox/meilisearch-ui/compare/v0.11.5...v0.11.6) (2025-04-03)
+
+
+### Bug Fixes
+
+* links of breadcrumbs do not respect BASE_URL ([#210](https://github.com/riccox/meilisearch-ui/issues/210)) ([cb8b5ef](https://github.com/riccox/meilisearch-ui/commit/cb8b5ef085a1a26ad802680db2b858bde960a2ff))
+
+## [0.11.5](https://github.com/riccox/meilisearch-ui/compare/v0.11.4...v0.11.5) (2025-03-11)
+
+
+### Bug Fixes
+
+* document field detail modal btn i18n text. ([9d23f5b](https://github.com/riccox/meilisearch-ui/commit/9d23f5b0973bf5fbc4085db8997b0899302fc0fd))
+* index list search tip text. ([22ade67](https://github.com/riccox/meilisearch-ui/commit/22ade6775be2a81752165fa66d4c592d938cea1f))
+
+
+### Performance Improvements
+
+* header link color. ([51ac339](https://github.com/riccox/meilisearch-ui/commit/51ac3395a7bff0ee48e36588ef4519d3f83585d3))
+
+## [0.11.4](https://github.com/riccox/meilisearch-ui/compare/v0.11.3...v0.11.4) (2025-03-10)
+
+
+### Bug Fixes
+
+* key form request. gh-199 ([76b7f88](https://github.com/riccox/meilisearch-ui/commit/76b7f88e664fa458b8a2802a64c620341479e8e4))
+* possible errors caused by deps upgrades. ([1287e1d](https://github.com/riccox/meilisearch-ui/commit/1287e1da992f27b91dce7e346e8c3006ff109426))
+
+
+### Performance Improvements
+
+* document field value display support auto-parse. ([fdc93b2](https://github.com/riccox/meilisearch-ui/commit/fdc93b288d9d75c7b9e06434778753312d12362b))
+* expand task details popup. gh-201 ([bd51827](https://github.com/riccox/meilisearch-ui/commit/bd518276fca3d479c8769a6b183d2047c739c95c))
+* use stats index data for better index search logic. gh-202 ([0073cc1](https://github.com/riccox/meilisearch-ui/commit/0073cc1183a585345c43ed20c9bcb874c6b2bfff))
+
+## [0.11.3](https://github.com/riccox/meilisearch-ui/compare/v0.11.2...v0.11.3) (2025-02-20)
+
+
+### Bug Fixes
+
+* update doc editor broken. gh-192 ([712f594](https://github.com/riccox/meilisearch-ui/commit/712f594a9ee1a3c8eccd135337111552184c09bb))
+* upload json docs file. gh-197 ([2037e2c](https://github.com/riccox/meilisearch-ui/commit/2037e2c709b09343916ac6ce80e50d2ab25a8f83))
+
+## [0.11.2](https://github.com/riccox/meilisearch-ui/compare/v0.11.1...v0.11.2) (2025-02-19)
+
+
+### Bug Fixes
+
+* JSON editor use CodeMirror. ([26c7c4d](https://github.com/riccox/meilisearch-ui/commit/26c7c4d79fa5d627cf3d56fb74fccead1e1c8d40))
+
+
+### Performance Improvements
+
+* debug log level. ([193cac2](https://github.com/riccox/meilisearch-ui/commit/193cac2d6cff3aa2a92ba049b4100644b0e0c609))
+* update loader style. ([ae265a5](https://github.com/riccox/meilisearch-ui/commit/ae265a52e5fe11fa8ebcd583e1921af83c0726b4))
+
+## [0.11.1](https://github.com/riccox/meilisearch-ui/compare/v0.11.0...v0.11.1) (2025-01-16)
+
+
+### Bug Fixes
+
+* document editor remain previous value after close. ([4c2824f](https://github.com/riccox/meilisearch-ui/commit/4c2824f58bd0befb7174590ec7618c12b962118f))
+
+## [0.11.0](https://github.com/riccox/meilisearch-ui/compare/v0.10.3...v0.11.0) (2025-01-16)
+
+
+### Features
+
+* support export and import instances (gh-187) ([8a7e9c1](https://github.com/riccox/meilisearch-ui/commit/8a7e9c1492a25335fd151cc8a24cce4080a61b33))
+
+## [0.10.3](https://github.com/riccox/meilisearch-ui/compare/v0.10.2...v0.10.3) (2025-01-15)
+
+
+### Bug Fixes
+
+* resource load error cause by relative path. gh-185 ([c8700bd](https://github.com/riccox/meilisearch-ui/commit/c8700bdbfe0b210bfd2e3eb6acf8622e57f067c7))
+
+## [0.10.2](https://github.com/riccox/meilisearch-ui/compare/v0.10.1...v0.10.2) (2025-01-13)
+
+
+### Continuous Integration
+
+* lite builder push latest tag unexpectedly. ([36f02ae](https://github.com/riccox/meilisearch-ui/commit/36f02ae0b37c75ef6f5615503d6f5a817aaf2b6c))
+
+## [0.10.1](https://github.com/riccox/meilisearch-ui/compare/v0.10.0...v0.10.1) (2025-01-13)
+
+
+### Bug Fixes
+
+* BASE_PATH by build variant image tag "lite". ([21d2ce1](https://github.com/riccox/meilisearch-ui/commit/21d2ce1d1c44042d15aa3a3cbefccdbe1a9e2ca6))
+* task list load more on scroll bottom. gh-181 ([c6e5641](https://github.com/riccox/meilisearch-ui/commit/c6e5641ea1b5b834fa0a0f205afbd6c54d7bb564))
+
+
+### Performance Improvements
+
+* add instance DB size to index sidebar. gh-180 ([86207b8](https://github.com/riccox/meilisearch-ui/commit/86207b84ee8157c0f59b6442bce335872ce382b3))
+
 ## [0.10.0](https://github.com/riccox/meilisearch-ui/compare/v0.9.6...v0.10.0) (2024-12-06)
 
 

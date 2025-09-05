@@ -37,6 +37,8 @@
   "version": "版本",
   "none": "暂无",
   "singleton_mode": "单实例模式",
+  "enable": "启用",
+  "disable": "禁用",
   "toast": {
     "fail": "失败, {{msg}}"
   }
